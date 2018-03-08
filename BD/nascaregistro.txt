@@ -1,0 +1,353 @@
+﻿bb   vpoginfo_regtubos
+user vpoginfo_rtubos
+pass pL0mada$256
+
+
+nasca218 
+
+
+<?
+$anterior = 1;
+$actual   = 2;
+$id = 1;
+$norma= 2;
+$recordset = {
+                {
+                        {'id','Norma'},
+                        {1, 'Gonz'},
+                        {2, 'Tap'}
+                },
+                {
+                        {'id','Norma'},
+                        {1, 'Gonz'},
+                        {2, 'Tap'}
+                }
+             };
+
+
+$filaActual =1;
+/*
+el usuario modifica Gonz por Gonzalez
+*/
+llama a la funcion UpdateNorma (
+                                $recodset[$filaactual][$id][$actual],
+                                $recodset[$filaactual][$norma][$actual],
+                                $recodset[$filaactual][$norma][$anterior],
+                                );
+
+
+$recodset[$filaactual][$norma][$anterior] =$recodset[$filaactual][$norma][$actual];
+
+
+
+
+
+
+function UpdateNorma ($id, $NormaActual, $NormaAnterior)
+$sql = 'UPDATE
+                norma = '.$NormaActual.
+        'WHERE
+                id ='. $id.' AND
+        norma = '.$NormaAnterior
+       ;
+?>
+
+
+
+
+
+
+
+
+CREATE TABLE cliente ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+rut INTEGER NOT NULL,
+nombre char(240) NOT NULL,
+direccion char(240) NOT NULL,
+email char(80),
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE UNIQUE INDEX idx_clientenombre ON cliente(nombre);
+CREATE UNIQUE INDEX idx_clienterut ON cliente(rut);
+
+
+CREATE VIEW vw_cliente AS
+SELECT
+id, rut, nombre, direccion, email, cuando
+FROM cliente
+WHERE visible =1
+;
+
+
+
+
+CREATE TABLE tipo_cilindro ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+codigo char(10) NOT NULL,
+nombre char(40) NOT NULL,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE UNIQUE INDEX idx_tipo_cilindro_nombre ON tipo_cilindro(nombre);
+CREATE UNIQUE INDEX idx_tipo_cilindro_codigo ON tipo_cilindro(codigo);
+
+
+
+
+CREATE VIEW vw_tipo_cilindro AS
+SELECT
+id, codigo, nombre, cuando
+FROM tipo_cilindro
+WHERE visible =1
+;
+
+
+CREATE TABLE fabricante ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+codigo char(10) NOT NULL,
+nombre char(40) NOT NULL,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+CREATE UNIQUE INDEX idx_fabricante_nombre ON fabricante(nombre);
+CREATE UNIQUE INDEX idx_fabricante_codigo ON fabricante(codigo);
+
+
+
+
+
+
+CREATE VIEW vw_fabricante AS
+SELECT 
+id, codigo, nombre, cuando
+ FROM fabricante
+WHERE visible =1;
+
+
+
+
+
+
+ALTER TABLE cilindro ADD COLUMN  id_tipo_cilindro INTEGER NOT NULL REFERENCES tipo_cilindro(id)
+
+
+CREATE TABLE revision ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+id_cliente INTEGER NOT NULL REFERENCES cliente(id),
+inicio DATETIME NOT NULL,
+termino TIMESTAMP NULL,
+numero INT NULL ,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+
+
+);
+
+
+CREATE VIEW vw_revision AS
+SELECT 
+revision.id , 
+revision.id_cliente ,
+cliente.nombre AS cliente_nombre,
+revision.inicio ,
+revision.termino ,
+revision.numero  
+FROM revision
+INNER JOIN cliente ON (revision.id_cliente = cliente.id)
+WHERE revision.visible =1
+;
+
+
+CREATE TABLE foto ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+dir1 int NOT NULL,
+dir2 int NOT NULL,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE VIEW vw_foto AS
+SELECT
+id, dir1,dir2,
+CONCAT('/usrimg/', LPAD(dir1, 3, '0'), '/',LPAD(dir2, 3, '0'), '/', LPAD(id, 8, '0') ) AS ruta
+FROM foto
+WHERE visible =1
+
+
+/*
+Antes de agregar una foto debes evaluar el último directorio 1 y el último directorio 2, cada uno debe llegar hasta 999 y el archivo de imagen debe tener máximo de 999 
+quedando así
+/usrimg/001/001/
+                           00000001
+                           00000002
+                           00000003
+                           ….
+                           ….
+                   00000999
+/usrimg/001/002/
+                   00001000
+                   00001001
+                           00001003
+                           ….
+                           ….
+                   00001999
+/usrimg/001/003/
+                   ….
+                   ….
+/usrimg/001/999/
+
+
+                   ….
+                   ….
+*/
+
+
+
+
+
+
+CREATE TABLE norma ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+norma char(40) NOT NULL,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE UNIQUE INDEX idx_norma_norma ON norma(norma);
+
+
+
+
+CREATE VIEW vw_norma AS
+SELECT
+id, norma, cuando
+FROM norma
+WHERE visible =1;
+
+
+CREATE TABLE detalle_revision ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+id_revision INTEGER NOT NULL REFERENCES revision(id),
+numero INTEGER NOT NULL,
+id_tipo_cilindro INTEGER NOT NULL REFERENCES tipo_cilindro(id),
+fabricacion date NOT NULL,
+id_fabricante INTEGER NOT NULL REFERENCES fabricante(id),
+IVhiloCuello     INTEGER ,
+IVExterior         INTEGER,
+IVInterior          INTEGER,
+id_norma INTEGER NOT NULL REFERENCES norma(id),
+ultimaprueba date NOT NULL,
+PresionDeServicio INTEGER ,
+PresionDePruebaEstampado INTEGER NULL,
+VolCargaIndicada DOUBLE(8,2),
+PresionPrueba INTEGER,
+DeformTotal INTEGER,
+DeformPermanente INTEGER,
+Elasticidad INTEGER,
+DeformPermPorcentaje INTEGER,
+pintura INTEGER,
+/*foto char(200),
+*/
+id_foto INTEGER NOT NULL REFERENCES foto(id),
+cambio_valvula INTEGER,
+valvula INTEGER,
+manilla INTEGER,
+volante INTEGER,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+Aprobado INTEGER
+);
+
+
+
+
+ALTER TABLE detalle_revision ADD COLUMN
+id_foto INTEGER REFERENCES foto(id);
+
+
+
+
+ALTER TABLE detalle_revision DROP COLUMN foto;
+
+
+
+
+
+
+DROP VIEW vw_detalle_revision 
+;
+CREATE VIEW vw_detalle_revision AS
+SELECT 
+detalle_revision.id  ,
+detalle_revision.id_revision  ,
+detalle_revision.numero  ,
+detalle_revision.id_tipo_cilindro  ,
+detalle_revision.fabricacion ,
+detalle_revision.id_fabricante ,
+fabricante.nombre AS fabricante_nombre,
+detalle_revision.id_norma,
+norma.norma AS norma,
+detalle_revision.ultimaprueba,
+detalle_revision.PresionDeServicio  ,
+detalle_revision.PresionDePruebaEstampado,
+detalle_revision.VolCargaIndicada ,
+detalle_revision.PresionPrueba ,
+detalle_revision.DeformTotal ,
+detalle_revision.DeformPermanente ,
+detalle_revision.Elasticidad ,
+detalle_revision.DeformPermPorcentaje ,
+detalle_revision.pintura ,
+detalle_revision.id_foto ,
+vw_foto.ruta AS ruta_foto,
+detalle_revision.cambio_valvula ,
+detalle_revision.valvula ,
+detalle_revision.manilla ,
+detalle_revision.volante ,
+detalle_revision.cuando ,
+detalle_revision.IVhiloCuello      ,
+detalle_revision.IVExterior         ,
+detalle_revision.IVInterior          ,
+detalle_revision.Aprobado 
+FROM detalle_revision 
+INNER JOIN norma ON (detalle_revision.id_norma = norma.id)
+INNER JOIN fabricante ON( detalle_revision.id_fabricante = fabricante.id )
+LEFT JOIN vw_foto ON( vw_foto.id = detalle_revision.id_foto   )
+WHERE detalle_revision.visible =1;
+
+
+
+
+
+
+
+
+CREATE TABLE usuario ( 
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+codigo char(10) NOT NULL,
+nombre char(40) NOT NULL,
+clave char(20) NOT NULL,
+acceso int NOT NULL,
+visible INTEGER  DEFAULT 1 NOT NULL,
+cuando TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+CREATE VIEW vw_usuario  AS 
+SELECT 
+id, codigo, nombre, clave, acceso, cuando
+FROM usuario
+WHERE visible =1
+;

@@ -1,0 +1,498 @@
+===Base de datos regtubos
+
+== Estructura de tabla para la tabla cliente
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|**rut**|int(11)|No|
+|**nombre**|char(240)|No|
+|direccion|char(240)|No|
+|email|char(80)|Sí|NULL
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla cliente
+
+|3|21480855|Mario Bross|Chock|tanufuki@gmail.cl|0|2015-06-26 21:21:25
+|4|10924592|Maria jimena|LLICO115| |1|2015-06-26 21:22:44
+|5|3|Pablos|ple| |0|2015-06-26 22:11:51
+|6|1|d2|d| |0|2015-06-28 04:24:22
+|7|2|Anna|Macul| |0|2015-06-28 05:07:32
+|8|9863795|La Prueba de fuego XD|Partido 6 -1| |1|2015-06-30 04:12:08
+|9|1101961|Chock|Vespucio sur|ChockDoge@gmail.com|1|2015-06-30 04:18:06
+|10|1704837|jason|j| |0|2015-06-30 04:28:24
+|11|12433720|Blue|b| |0|2015-06-30 04:44:08
+|12|20250539|Nasca view|Nasca15|Nasca@gmai.com|1|2015-06-30 20:52:05
+|13|20747529|ChockF|Vespucio sur|ChockDoge@gmail.com|1|2015-06-30 21:11:14
+|14|13545570|Antonio Letho|dominical 10| |1|2015-06-30 21:48:42
+|15|13179542|Mario bros|mario verde| |0|2015-06-30 21:49:46
+|17|8|hey|h| |1|2015-07-01 22:48:30
+|18|9|Pedro Letho|p| |1|2015-07-01 23:34:55
+|19|18622056|Angelo Alexander Matias Candia Alessandrini|sdf| |1|2015-07-01 23:41:31
+|20|0| | | |0|2015-07-06 19:26:22
+== Estructura de tabla para la tabla detalle_revision
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|id_revision|int(11)|No|
+|numero|int(11)|No|
+|id_tipo_cilindro|int(11)|No|
+|fabricacion|date|No|
+|id_fabricante|int(11)|No|
+|IVhiloCuello|int(11)|Sí|NULL
+|IVExterior|int(11)|Sí|NULL
+|IVInterior|int(11)|Sí|NULL
+|id_norma|int(11)|No|
+|ultimaprueba|date|No|
+|PresionDeServicio|int(11)|Sí|NULL
+|PresionDePruebaEstampado|int(11)|Sí|NULL
+|VolCargaIndicada|double(8,2)|Sí|NULL
+|PresionPrueba|int(11)|Sí|NULL
+|DeformTotal|int(11)|Sí|NULL
+|DeformPermanente|int(11)|Sí|NULL
+|Elasticidad|int(11)|Sí|NULL
+|DeformPermPorcentaje|int(11)|Sí|NULL
+|pintura|int(11)|Sí|NULL
+|id_foto|int(11)|No|
+|cambio_valvula|int(11)|Sí|NULL
+|valvula|int(11)|Sí|NULL
+|manilla|int(11)|Sí|NULL
+|volante|int(11)|Sí|NULL
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+|Aprobado|int(11)|Sí|NULL
+== Volcado de datos para la tabla detalle_revision
+
+|1|1|123|1|2015-07-12|11|0|0|0|2|2015-07-10|23|23|23.00|23|23|0|0|0|1|9|1|1|1|0|1|2015-07-21 18:05:15|0
+== Estructura de tabla para la tabla fabricante
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|**codigo**|char(10)|No|
+|**nombre**|char(40)|No|
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla fabricante
+
+|1|phi|philip|1|2015-06-10 16:54:25
+|2|Usuario|Usu|1|2015-07-05 20:51:37
+|3|Codi|Codigo|1|2015-07-05 22:20:51
+|4|123|Co|0|2015-07-05 22:21:05
+|5|Mch|Michael|1|2015-07-05 23:02:34
+|6|nuevo|nuevo|1|2015-07-05 23:03:21
+|7|b|B|0|2015-07-06 00:28:46
+|8|iuhdsaihu|kds|1|2015-07-06 00:33:11
+|9|kk|k|1|2015-07-06 00:37:12
+|10|kkk|kkk|1|2015-07-06 00:37:32
+|11|EXT|extintores|1|2015-07-14 21:02:45
+|12|Tre|trevol|1|2015-07-20 16:58:39
+|13|HM|Homero|1|2015-07-20 17:19:54
+== Estructura de tabla para la tabla foto
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|dir1|int(11)|No|
+|dir2|int(11)|No|
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla foto
+
+|1|111|111|1|2015-06-10 16:55:03
+|2|123|123|0|2015-06-10 17:05:16
+|3|230|350|1|2015-07-01 18:39:10
+|4|234|345|1|2015-07-01 18:41:58
+|5|999|999|1|2015-07-01 18:43:47
+|6|234|345|1|2015-07-01 18:44:27
+|7|23|345|0|2015-07-01 18:44:46
+|8|300|345|1|2015-07-01 18:45:11
+|9|103|100|1|2015-07-01 18:50:36
+|10|223|346|1|2015-07-01 18:52:46
+|11|900|100|1|2015-07-01 18:53:54
+|12|1|1|0|2015-07-01 18:54:45
+|13|1|1|0|2015-07-01 18:55:30
+|14|500|500|1|2015-07-01 23:05:20
+|15|1|345|1|2015-07-01 23:46:59
+|16|23|23|0|2015-07-01 23:47:09
+|17|45|45|1|2015-07-01 23:47:17
+|18|234|234|1|2015-07-06 02:41:12
+|19|234|234|1|2015-07-06 02:41:20
+|20|550|550|1|2015-07-06 16:00:00
+|21|550|550|1|2015-07-06 16:01:12
+|22|23456|2345|1|2015-07-09 17:50:51
+|23|234|23|1|2015-07-09 18:57:32
+|24|666|666|1|2015-07-17 21:17:07
+|25|999|999|1|2015-07-17 21:17:12
+|26|999|998|1|2015-07-17 21:17:36
+== Estructura de tabla para la tabla norma
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|**norma**|char(40)|No|
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla norma
+
+|1|Ext|1|2015-06-10 16:53:04
+|2|H|1|2015-06-10 16:53:12
+|3|Norma 10+|1|2015-06-28 19:10:39
+|7|9000|1|2015-06-28 19:15:40
+|8|9001|0|2015-06-28 19:21:26
+|9|9002|1|2015-06-28 19:22:02
+|11|9003|1|2015-06-28 19:23:01
+|13|1000|0|2015-06-28 19:31:40
+|14|1010|0|2015-06-28 19:31:45
+|15|CGA -C1;|1|2015-06-28 19:32:29
+|16|6|0|2015-06-28 19:32:40
+|21|2|0|2015-06-28 19:39:36
+|22|NoRMA123|1|2015-06-28 19:40:32
+|23|Norma44|1|2015-06-28 20:00:26
+|27|NCH 2244|1|2015-06-28 20:02:31
+|28|777|1|2015-06-28 20:02:40
+|30|8|0|2015-06-28 20:03:36
+|34|100|0|2015-06-28 20:06:08
+|36|10001+Â·$%&amp;|0|2015-06-28 20:07:02
+|41|10013|0|2015-06-28 20:07:52
+|42|Norma 2S|1|2015-06-28 20:32:44
+|43|yf|1|2015-06-28 20:38:23
+|44|jocob|1|2015-06-28 20:38:56
+|45|josen|0|2015-06-28 20:45:37
+|47|Norma 10000|1|2015-06-28 23:19:32
+|48|Norma 4000|1|2015-06-28 23:30:42
+|49|Norma 1|1|2015-06-28 23:38:14
+|50|Norma DetalleR|1|2015-06-29 18:25:32
+|51| |0|2015-07-01 22:40:31
+|52|sedfg|1|2015-07-01 23:42:09
+|53| 100|0|2015-07-02 00:23:52
+|54|Norma 8001|1|2015-07-05 14:30:31
+|55|NormaP`rue|1|2015-07-17 21:15:57
+|56|rtgjkg|1|2015-07-17 21:16:08
+|57|NcH 2056|1|2015-07-22 23:40:42
+|58|e|1|2015-07-27 01:09:13
+|59|k|1|2015-07-27 01:09:18
+|60|344|1|2015-07-27 01:09:25
+|61|Norma pdf|1|2015-07-27 01:09:31
+|62|saifdhui|1|2015-07-27 01:11:15
+|63|feojiws|1|2015-07-27 01:11:22
+|64|frs|1|2015-07-27 01:11:27
+|65|ksjfdnksjn|1|2015-07-27 01:11:33
+|66|kasjdhnk|1|2015-07-27 01:11:49
+|67|ednk|1|2015-07-27 01:11:54
+|68|4r5|1|2015-07-27 01:12:01
+|69|efks|1|2015-07-27 01:12:06
+|70|eknfdskjnhdihn|1|2015-07-27 01:12:12
+|71|kakdn|1|2015-07-27 01:28:51
+|72|khewhiwh|1|2015-07-27 01:28:59
+|73|zdlnvlskn|1|2015-07-27 01:29:05
+|74|skjdn|1|2015-07-27 01:29:12
+|75|fknl|1|2015-07-27 01:29:24
+|76|dsfjs|1|2015-07-27 01:29:41
+|77|uygyuguy|1|2015-07-27 01:29:50
+|78|nknkn|1|2015-07-27 01:29:57
+|79|jnknj|1|2015-07-27 01:30:03
+|80|67890|1|2015-07-27 01:30:09
+|81|gfhuk|1|2015-07-27 01:30:16
+|82|cvfghjk|1|2015-07-27 01:30:22
+|83|vbghjk|1|2015-07-27 01:30:28
+|84|vghbjkli|1|2015-07-27 01:30:34
+|85|hgjbkijl|1|2015-07-27 01:30:47
+== Estructura de tabla para la tabla revision
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|id_cliente|int(11)|No|
+|inicio|datetime|No|
+|termino|timestamp|Sí|NULL
+|numero|int(11)|Sí|NULL
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla revision
+
+|1|19|2015-07-09 02:32:02|2015-07-14 00:00:00|30010|1|2015-07-09 02:32:02
+|2|9|2015-07-13 22:26:46|2015-09-18 00:00:00|2300|1|2015-07-13 22:26:46
+|3|13|2015-07-13 23:16:18|2015-07-17 00:00:00|400|0|2015-07-13 23:16:18
+|4|14|2015-07-20 21:39:34|NULL|3|0|2015-07-20 21:39:34
+|5|14|2015-07-20 21:40:00|NULL|3|0|2015-07-20 21:40:00
+|6|8|2015-07-20 21:40:13|2015-07-28 00:00:00|3|1|2015-07-20 21:40:13
+|7|4|2015-07-20 22:05:57|0000-00-00 00:00:00|23456|0|2015-07-20 22:05:57
+|8|19|2015-07-20 22:06:25|2015-07-29 00:00:00|3355|1|2015-07-20 22:06:25
+|9|14|2015-07-21 00:44:43|NULL|30|1|2015-07-21 00:44:43
+|10|13|2015-07-22 21:13:25|2015-07-01 00:00:00|9999|1|2015-07-22 21:13:25
+|11|13|2015-07-22 21:15:17|2015-07-31 00:00:00|99990|1|2015-07-22 21:15:17
+|12|19|2015-07-22 22:30:57|2015-07-08 00:00:00|1000|1|2015-07-22 22:30:57
+|13|19|2015-07-22 22:32:18|2015-07-23 00:00:00|1000|1|2015-07-22 22:32:18
+|14|19|2015-07-22 22:32:40|2015-07-31 00:00:00|2000|1|2015-07-22 22:32:40
+|15|8|2015-07-22 22:44:50|NULL|12|1|2015-07-22 22:44:50
+|16|8|2015-07-22 22:45:16|NULL|12|1|2015-07-22 22:45:16
+|17|9|2015-07-22 22:45:37|2015-07-31 00:00:00|55|1|2015-07-22 22:45:37
+== Estructura de tabla para la tabla tipo_cilindro
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|**codigo**|char(10)|No|
+|**nombre**|char(40)|No|
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla tipo_cilindro
+
+|1|ext|extintor|1|2015-05-27 00:46:57
+|2|ND|detalle revision|0|2015-06-29 18:25:45
+|3|PHI|philip|0|2015-06-29 22:18:30
+|4|ang+|angelo|0|2015-06-29 22:19:11
+|5|H|Hidrogeno|0|2015-06-29 22:21:22
+|6| | |0|2015-07-01 22:52:41
+|7|34|r|0|2015-07-01 22:53:04
+|8|345t6yu|2345t6y|0|2015-07-06 20:42:25
+|9|qwertghgre|Amoniaco|1|2015-07-19 17:52:48
+|10|2222222225|23yrh8ecgbweugfbbegcwa|1|2015-07-19 18:06:27
+|11|edsfd|ertghe|1|2015-07-19 21:12:48
+|12|2222222223|swjkn|1|2015-07-20 03:19:54
+== Estructura de tabla para la tabla usuario
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id**//|int(11)|No|
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|clave|char(20)|No|
+|acceso|int(11)|No|
+|visible|int(11)|No|1
+|cuando|timestamp|No|CURRENT_TIMESTAMP
+== Volcado de datos para la tabla usuario
+
+|1|An.candia|Angelo|angelo100|2|1|2015-05-26 22:48:11
+|2|be.ja|benjamin|12345|0|1|2015-06-08 21:14:00
+|3|P1.prueba|Prueba1|acceso|1|1|2015-06-16 18:32:36
+== Estructura de tabla para la tabla usuarios
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**codigo**//|int(5)|No|
+|nombres|varchar(100)|No|
+|apellidos|varchar(100)|No|
+|telefono|varchar(10)|No|
+|ciudad|varchar(100)|No|
+== Volcado de datos para la tabla usuarios
+
+|34|pedro|rodriguez|4003790|medellin
+|35|andres|perez|1234567|popayan
+== Estructura Stand-in para la vista vw_cliente
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|rut|int(11)|No|
+|nombre|char(240)|No|
+|direccion|char(240)|No|
+|email|char(80)|Sí|NULL
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura Stand-in para la vista vw_detalle_revision
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|id_revision|int(11)|No|
+|numero|int(11)|No|
+|id_tipo_cilindro|int(11)|No|
+|fabricacion|date|No|
+|id_fabricante|int(11)|No|
+|fabricante_nombre|char(40)|No|
+|id_norma|int(11)|No|
+|norma|char(40)|No|
+|ultimaprueba|date|No|
+|PresionDeServicio|int(11)|Sí|NULL
+|PresionDePruebaEstampado|int(11)|Sí|NULL
+|VolCargaIndicada|double(8,2)|Sí|NULL
+|PresionPrueba|int(11)|Sí|NULL
+|DeformTotal|int(11)|Sí|NULL
+|DeformPermanente|int(11)|Sí|NULL
+|Elasticidad|int(11)|Sí|NULL
+|DeformPermPorcentaje|int(11)|Sí|NULL
+|pintura|int(11)|Sí|NULL
+|id_foto|int(11)|No|
+|ruta_foto|varchar(24)|Sí|
+|cambio_valvula|int(11)|Sí|NULL
+|valvula|int(11)|Sí|NULL
+|manilla|int(11)|Sí|NULL
+|volante|int(11)|Sí|NULL
+|cuando|timestamp|No|0000-00-00 00:00:00
+|IVhiloCuello|int(11)|Sí|NULL
+|IVExterior|int(11)|Sí|NULL
+|IVInterior|int(11)|Sí|NULL
+|Aprobado|int(11)|Sí|NULL
+== Estructura Stand-in para la vista vw_fabricante
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura Stand-in para la vista vw_foto
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|dir1|int(11)|No|
+|dir2|int(11)|No|
+|ruta|varchar(24)|No|
+== Estructura Stand-in para la vista vw_norma
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|norma|char(40)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura Stand-in para la vista vw_revision
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|id_cliente|int(11)|No|
+|cliente_nombre|char(240)|No|
+|inicio|datetime|No|
+|termino|timestamp|Sí|NULL
+|numero|int(11)|Sí|NULL
+== Estructura Stand-in para la vista vw_tipo_cilindro
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura Stand-in para la vista vw_usuario
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|clave|char(20)|No|
+|acceso|int(11)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura para la vista vw_cliente
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|rut|int(11)|No|
+|nombre|char(240)|No|
+|direccion|char(240)|No|
+|email|char(80)|Sí|NULL
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura para la vista vw_detalle_revision
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|id_revision|int(11)|No|
+|numero|int(11)|No|
+|id_tipo_cilindro|int(11)|No|
+|fabricacion|date|No|
+|id_fabricante|int(11)|No|
+|fabricante_nombre|char(40)|No|
+|id_norma|int(11)|No|
+|norma|char(40)|No|
+|ultimaprueba|date|No|
+|PresionDeServicio|int(11)|Sí|NULL
+|PresionDePruebaEstampado|int(11)|Sí|NULL
+|VolCargaIndicada|double(8,2)|Sí|NULL
+|PresionPrueba|int(11)|Sí|NULL
+|DeformTotal|int(11)|Sí|NULL
+|DeformPermanente|int(11)|Sí|NULL
+|Elasticidad|int(11)|Sí|NULL
+|DeformPermPorcentaje|int(11)|Sí|NULL
+|pintura|int(11)|Sí|NULL
+|id_foto|int(11)|No|
+|ruta_foto|varchar(24)|Sí|
+|cambio_valvula|int(11)|Sí|NULL
+|valvula|int(11)|Sí|NULL
+|manilla|int(11)|Sí|NULL
+|volante|int(11)|Sí|NULL
+|cuando|timestamp|No|0000-00-00 00:00:00
+|IVhiloCuello|int(11)|Sí|NULL
+|IVExterior|int(11)|Sí|NULL
+|IVInterior|int(11)|Sí|NULL
+|Aprobado|int(11)|Sí|NULL
+== Estructura para la vista vw_fabricante
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura para la vista vw_foto
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|dir1|int(11)|No|
+|dir2|int(11)|No|
+|ruta|varchar(24)|No|
+== Estructura para la vista vw_norma
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|norma|char(40)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura para la vista vw_revision
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|id_cliente|int(11)|No|
+|cliente_nombre|char(240)|No|
+|inicio|datetime|No|
+|termino|timestamp|Sí|NULL
+|numero|int(11)|Sí|NULL
+== Estructura para la vista vw_tipo_cilindro
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
+== Estructura para la vista vw_usuario
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|id|int(11)|No|0
+|codigo|char(10)|No|
+|nombre|char(40)|No|
+|clave|char(20)|No|
+|acceso|int(11)|No|
+|cuando|timestamp|No|0000-00-00 00:00:00
