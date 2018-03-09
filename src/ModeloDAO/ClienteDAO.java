@@ -21,7 +21,7 @@ public class ClienteDAO {
      Statement instru;
      int modificar = 0; //codigo basura para testear github
      String otroModificar = null;
-     
+     //
      //
      
     public ClienteDAO() throws Exception
